@@ -2,10 +2,10 @@ import { auth } from "@clerk/nextjs/server";
 import { and, eq, isNull } from "drizzle-orm";
 import { CirclePlus } from "lucide-react";
 
-import { db } from "@/db";
-import { Customers, Invoices } from "@/db/schema";
+import { db } from "../../db";
+import { Customers, Invoices } from "../../db/schema";
 
-import Container from "@/components/Container";
+import Container from "../../components/Container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {

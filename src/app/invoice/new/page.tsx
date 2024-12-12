@@ -3,13 +3,13 @@
 import Form from "next/form";
 import { type SyntheticEvent, useState } from "react";
 
-import Container from "@/components/Container";
-import SubmitButton from "@/components/SubmitButton";
+import Container from "../../../components/Container";
+import SubmitButton from "../../../components/SubmitButton";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-import { createAction } from "@/app/actions";
+import { createAction } from "../../actions";
 
 export default function Home() {
   const [state, setState] = useState("ready");
