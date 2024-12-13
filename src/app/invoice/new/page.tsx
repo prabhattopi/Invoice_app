@@ -17,9 +17,9 @@ export default function Home() {
 
   async function handleOnSubmit(event: SyntheticEvent) {
     // Submission disabled for demo
-    event.preventDefault();
-    setError('Submission disabled for demo.');
-    return;
+    // event.preventDefault();
+    // setError('Submission disabled for demo.');
+    // return;
 
     if (state === "pending") {
       event.preventDefault();
