@@ -13,9 +13,11 @@ const isPublic = createRouteMatcher([
 //   '/invoices/new'
 // ])
 
-export default clerkMiddleware(async (auth, req) => {
-  if (isPublic(req)) await auth.protect()
-})
+export default clerkMiddleware((auth, request) => {
+  if (!isPublic(request)) {
+    auth().protect();
+  }
+});
 
 export const config = {
   matcher: [

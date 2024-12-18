@@ -55,18 +55,16 @@ export default async function Home() {
       customer: customers,
     };
   });
-
+console.log("hellow")
   return (
     <main className="h-full">
       <Container>
-        <p className="bg-yellow-100 text-sm text-yellow-800 text-center px-3 py-2 rounded-lg mb-6">
-          Displaying all invoices for public demo. Creation is disabled.
-        </p>
+     
         <div className="flex justify-between mb-6">
           <h1 className="text-3xl font-semibold">Invoices</h1>
           <p>
             <Button className="inline-flex gap-2" variant="ghost" asChild>
-              <Link href="/invoices/new">
+              <Link href="/invoice/new">
                 <CirclePlus className="h-4 w-4" />
                 Create Invoice
               </Link>
