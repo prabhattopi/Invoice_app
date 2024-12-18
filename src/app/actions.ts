@@ -148,7 +148,7 @@ export async function createPayment(formData: FormData) {
   const { userId } = auth();
   if ( userId !== process.env.ME_ID ) return;
 
-  const headersList = headers();
+  const headersList =await headers();
   const origin = headersList.get("origin");
   const id = Number.parseInt(formData.get("id") as string);
 
