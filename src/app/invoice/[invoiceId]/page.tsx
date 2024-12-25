@@ -8,12 +8,20 @@ import Invoice from "./Invoice";
 
 export default async function InvoicePage({
   params,
-}: { params: { invoiceId: string } }) {
-  const { userId, orgId } = auth();
+}:  {params: Promise<{ invoiceId: string }>}) {
+
+    // Resolve params to get dynamic route properties
+    const resolvedParams = await params;
+    const invoiceId = Number(resolvedParams.invoiceId);
+  
+    if (Number.isNaN(invoiceId)) {
+      throw new Error("Invalid Invoice ID");
+    }
+  const { userId} = auth();
+  // Await params to resolve dynamic route properties
 
   if (!userId) return;
 
-  const invoiceId = Number.parseInt(params.invoiceId);
 
   if (Number.isNaN(invoiceId)) {
     throw new Error("Invalid Invoice ID");
