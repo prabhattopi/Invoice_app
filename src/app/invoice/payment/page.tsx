@@ -1,4 +1,3 @@
-
 import { eq } from "drizzle-orm";
 import { Check, CreditCard } from "lucide-react";
 import Stripe from "stripe";
@@ -7,7 +6,6 @@ import Container from "@/components/Container";
 import { Badge } from "@/components/ui/badge";
 import { Customers, Invoices } from "@/db/schema";
 import { cn } from "@/lib/utils";
-
 import { Button } from "@/components/ui/button";
 
 import { createPayment, updateStatusAction } from "@/app/actions";
@@ -17,28 +15,25 @@ import { notFound } from "next/navigation";
 const stripe = new Stripe(String(process.env.STRIPE_API_SECRET));
 
 interface InvoicePageProps {
- params: Promise<{ invoiceId: string }>;
-  searchParams: {
-    status: string;
-    session_id: string;
-  };
+  params: Promise<{ invoiceId: string }>;
+  searchParams: Promise<{ status?: string; session_id?: string }>;
 }
 
 export default async function InvoicePage({
   params,
   searchParams,
 }: InvoicePageProps) {
-    const resolvedParams = await params;
-    const invoiceId = Number(resolvedParams.invoiceId);
+  // Resolve both params and searchParams asynchronously
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
 
+  const invoiceId = Number(resolvedParams.invoiceId);
 
-  const sessionId = searchParams.session_id;
-  const isSuccess = sessionId && searchParams.status === "success";
-  const isCanceled = searchParams.status === "canceled";
+  const sessionId = resolvedSearchParams.session_id || null;
+  const isSuccess =
+    sessionId && resolvedSearchParams.status === "success";
+  const isCanceled = resolvedSearchParams.status === "canceled";
   let isError = isSuccess && !sessionId;
-
-  console.log("isSuccess", isSuccess);
-  console.log("isCanceled", isCanceled);
 
   if (Number.isNaN(invoiceId)) {
     throw new Error("Invalid Invoice ID");
