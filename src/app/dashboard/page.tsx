@@ -88,7 +88,7 @@ console.log("hellow")
                 <TableRow key={result.id}>
                   <TableCell className="font-medium text-left p-0">
                     <Link
-                      href={`/invoices/${result.id}`}
+                      href={`/invoice/${result.id}`}
                       className="block p-4 font-semibold"
                     >
                       {new Date(result.createTs).toLocaleDateString()}
@@ -96,19 +96,19 @@ console.log("hellow")
                   </TableCell>
                   <TableCell className="text-left p-0">
                     <Link
-                      href={`/invoices/${result.id}`}
+                      href={`/invoice/${result.id}`}
                       className="block p-4 font-semibold"
                     >
                       {result.customer.name}
                     </Link>
                   </TableCell>
                   <TableCell className="text-left p-0">
-                    <Link className="block p-4" href={`/invoices/${result.id}`}>
+                    <Link className="block p-4" href={`/invoice/${result.id}`}>
                       {result.customer.email}
                     </Link>
                   </TableCell>
                   <TableCell className="text-center p-0">
-                    <Link className="block p-4" href={`/invoices/${result.id}`}>
+                    <Link className="block p-4" href={`/invoice/${result.id}`}>
                       <Badge
                         className={cn(
                           "rounded-full capitalize",
