@@ -17,7 +17,7 @@ import { notFound } from "next/navigation";
 const stripe = new Stripe(String(process.env.STRIPE_API_SECRET));
 
 interface InvoicePageProps {
-  params: { invoiceId: string };
+ params: Promise<{ invoiceId: string }>;
   searchParams: {
     status: string;
     session_id: string;
@@ -28,7 +28,9 @@ export default async function InvoicePage({
   params,
   searchParams,
 }: InvoicePageProps) {
-  const invoiceId = Number.parseInt(params.invoiceId);
+    const resolvedParams = await params;
+    const invoiceId = Number(resolvedParams.invoiceId);
+
 
   const sessionId = searchParams.session_id;
   const isSuccess = sessionId && searchParams.status === "success";
