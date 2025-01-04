@@ -33,26 +33,19 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <head>
-          {/* BangDB Tracking Initialization */}
+          {/* Inline BangDB Script */}
           <Script
             id="bangdb-init"
             strategy="beforeInteractive"
             dangerouslySetInnerHTML={{
               __html: `
                 var _paq = (window._paq = window._paq || []);
-                _paq.push(
-                  ['enableLinkTracking'],
-                  ['enableHeartBeatTimer', 30],
-                  ['trackAllContentImpressions']
-                );
+                _paq.push(['enableLinkTracking'], ['enableHeartBeatTimer', 30], ['trackAllContentImpressions']);
                 var _mtm = (window._mtm = window._mtm || []);
-                _mtm.push({
-                  'mtm.startTime': new Date().getTime(),
-                  'event': 'mtm.Start',
-                });
+                _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
                 (function () {
-                  var u = 'https://s-bugcheckyopmailcombasvmrjfy.bangdb.com:18080/stream//Data';
-                  _paq.push(['setTrackerUrl', u], ['setSiteId', 'InvoiceApp']);
+                  var u = 'https://s-bugcheckyopmailcombasvmrjfy.bangdb.com:18080/stream/testBug/testbug';
+                  _paq.push(['setTrackerUrl', u], ['setSiteId', 'invoice']);
                 })();
               `,
             }}
@@ -64,14 +57,13 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-
-          {/* BangDB External Scripts */}
+          {/* External BangDB Scripts */}
           <Script
             src="https://cdn.bangdb.com/tm/RYF1QYPFRXEP/matomo.js"
             strategy="lazyOnload"
           />
           <Script
-            src="https://cdn.bangdb.com/tm/RYF1QYPFRXEP/7ac26c411f584c24b65d41bc5403f620/mastercontainer.js"
+            src="https://cdn.bangdb.com/tm/RYF1QYPFRXEP/0d11343227924f0cb932105714baa74f/mastercontainer.js"
             strategy="lazyOnload"
           />
         </body>
